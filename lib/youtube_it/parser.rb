@@ -340,7 +340,7 @@ class YouTubeIt
         end.reduce({},:merge)
       end
     end
-    
+
     class SubscriptionFeedParser < FeedParser #:nodoc:
 
       def parse_content(content)
@@ -388,7 +388,11 @@ class YouTubeIt
     class VideoFeedParser < FeedParser #:nodoc:
 
       def parse_content(content)
-        doc = (content.is_a?(Nokogiri::XML::Document)) ? content : Nokogiri::XML(content)
+        if content.is_a?(Nokogiri::XML::Document) || content.is_a?(Nokogiri::XML::Element)
+          doc = content
+        else
+          doc = Nokogiri::XML(content)
+        end
 
         entry = doc.at "entry"
         parse_entry(entry)
@@ -604,7 +608,7 @@ class YouTubeIt
         end.reduce({},:merge)
       end
     end
-    
+
     class VideosFeedParser < VideoFeedParser #:nodoc:
 
     private

@@ -2,9 +2,9 @@
 
 == DONATION
 
-  YOUTUBE_IT is developed by many contributors who are passioned about opensource projects 
-  and selflessly donate their time and work. Following that spirit your donations to this project 
-  will be destined to the Tuquito Libre Foundation(http://fundacion.tuquito.org.ar) for developing 
+  YOUTUBE_IT is developed by many contributors who are passioned about opensource projects
+  and selflessly donate their time and work. Following that spirit your donations to this project
+  will be destined to the Tuquito Libre Foundation(http://fundacion.tuquito.org.ar) for developing
   technology projects intended to close the digital gap in Latin America.
 
 {<img src=http://www.pledgie.com/campaigns/16746.png?skin_name=chrome>}[http://www.pledgie.com/campaigns/16746]
@@ -15,10 +15,10 @@
   way to access the latest and most complete access to YouTube's video API.
   In comparison with the earlier Youtube interfaces, this new API and
   library offers much-improved flexibility around executing complex search
-  queries to obtain well-targeted video search results.  In addition, standard video management 
+  queries to obtain well-targeted video search results.  In addition, standard video management
   including but not limited to uploading, deleting, updating, like, dislike, ratings and
   comments.
-  
+
 == INSTALLATION & SETUP:
 
   * Create a youtube account.
@@ -45,7 +45,7 @@ Creating a client:
 
 Client with developer key:
   $ client = YouTubeIt::Client.new(:dev_key => "developer_key")
-    
+
 Client with youtube account and developer key:
   $ client = YouTubeIt::Client.new(:username => "youtube_username", :password =>  "youtube_passwd", :dev_key => "developer_key")
 
@@ -68,7 +68,7 @@ If your access token is still valid (be careful, access tokens may only be valid
 == PROFILES
   you can use multiple profiles in the same account like that
 
-  $ profiles = client.profiles(['username1','username2']) 
+  $ profiles = client.profiles(['username1','username2'])
   $ profiles['username1'].username, "username1"
 
 == VIDEO QUERIES
@@ -85,7 +85,7 @@ Basic Queries:
   $ client.videos_by(:user => 'liz')
   $ client.videos_by(:favorites, :user => 'liz')
   $ client.video_by("FQK1URcxmb4")
-  $ client.video_by("https://www.youtube.com/watch?v=QsbmrCtiEUU")  
+  $ client.video_by("https://www.youtube.com/watch?v=QsbmrCtiEUU")
   $ client.video_by_user("chebyte","FQK1URcxmb4")
 
 Standard Queries:
@@ -113,12 +113,12 @@ Fields Parameter(experimental features):
 
   Filter by date
   $ client.videos_by(:fields => {:published  => ((Date.today)})
-  $ client.videos_by(:fields => {:recorded   => ((Date.today)})  
+  $ client.videos_by(:fields => {:recorded   => ((Date.today)})
 
   Filter by date with range
   $ client.videos_by(:fields => {:published  => ((Date.today - 30)..(Date.today))})
-  $ client.videos_by(:fields => {:recorded   => ((Date.today - 30)..(Date.today))})  
-  
+  $ client.videos_by(:fields => {:recorded   => ((Date.today - 30)..(Date.today))})
+
 Note: These queries do not find private videos! Use these methods instead:
   $ client.get_my_video("FQK1URcxmb4")
   $ client.get_my_videos(:query => "penguin")
@@ -193,7 +193,7 @@ Unsubscribe To A Channel:
 
 List New Subscription Videos:
   $ client.new_subscription_videos(user) # default: current user
-  
+
 List Playlists:
   $ client.playlists(user, order_by) # default: current user, position
 
@@ -250,7 +250,7 @@ List Response Videos
   $ video = client.video_by("https://www.youtube.com/watch?v=QsbmrCtiEUU&feature=player_embedded")
   $ video.responses.videos
 
-  
+
 == BATCH VIDEOS
 you can list many videos at the same time
 
@@ -283,9 +283,10 @@ you can list many videos at the same time
 
 == User Activity
  You can get user activity with the followings params:
- 
- $ client.activity(user) #default current user
- 
+
+ $ client.activity(user) # defaults to current user
+ $ client.avtivity(user, inline: true) # pulls down associated videos
+
 == Video Upload From Browser:
 
 When uploading a video from your browser you need make a form upload with the followings params:
